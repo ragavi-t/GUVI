@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+        integrity="sha512-SfTiTlX6kk+qitfevl/7LibUOeJWlt9rbyDn92a1DqWOw9vWG2MFoays0sgObmWazO5BQPiFucnnEAjpAB+/Sw=="
+        crossorigin="anonymous" />
+    <style>
+        .top {
+            background-color: #565656;
+            height: 150px;
+            position: relative;
+        }
+
+        .middle {
+            background-color: white;
+            height: 30px;
+            padding-top: 0px;
+            position: hidden;
+        }
+
+        .bottom {
+            background-color: #565656;
+            height: 30px;
+            padding-top: 0px;
+            position: relative;
+        }
+
+        img {
+            border-radius: 50%;
+            border: 5px dotted #fbbe28;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        #nametag {
+            position: absolute;
+            background-color: #fbbe28;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%);
+            font-size: 50px;
+            border-radius: 10px;
+        }
+
+        td,
+        tr {
+            vertical-align: top;
+            width: 50%;
+            /* border-right: 2px solid rgba(105, 105, 105, 0.7); */
+        }
+
+        .topics {
+            font-family: Arial;
+            font-size: 25px;
+        }
+
+        body {
+            font-family: Arial;
+        }
+
+        input[type='range'] {
+            overflow: hidden;
+            width: 80px;
+            -webkit-appearance: none;
+            background-color: white;
+        }
+
+        input[type='range']::-webkit-slider-thumb {
+            width: 10px;
+            -webkit-appearance: none;
+            height: 10px;
+            background: white;
+            box-shadow: -80px 0 0 80px yellow;
+            border-radius: 50%;
+        }
+
+        input[type='range'] {
+            overflow: hidden;
+            width: 80px;
+            -webkit-appearance: none;
+            background-color: white;
+        }
+
+        #icons {
+            color: rgb(255, 187, 0);
+            background-color: rgb(73, 72, 72);
+            border-radius: 50%;
+            border: 3px dotted rgb(255, 187, 0);
+            padding: 6px;
+        }
+
+        .fa {
+            display: inline-block;
+            font: normal normal normal 14px/1 FontAwesome;
+        }
+    </style>
+</head>
+
+<body>
+    <div style="padding-left: 260px;padding-right: 260px;">
+        <!--  Header part -->
+        <div>
+            <div class="top">
+                <img src="data:image/jpeg;base64,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">
+                <p id="nametag"> Brian Dudey </p>
+            </div>
+
+            <div class="middle"></div>
+
+            <div class="bottom"></div>
+        </div>
+        <div>
+            <p style="text-align: center;">
+                N.Damen Avenue ,Chicago 9999 |999-999-9999| hello@kickresume.com |wwww.kickresume.com
+            </p>
+            <hr>
+        </div>
+
+        <div style="position: relative;">
+            <table style="position: absolute;">
+                <div class="vl"></div>
+                <tr>
+
+                    <!-- first row -->
+
+                    <td style="border-right: 2px solid rgba(105, 105, 105, 0.7);">
+                        <!-- Profile -->
+                        <p>
+                            <i class="fa fa-user" aria-hidden="true" id="icons"></i> <span class="topics">Profile</span>
+                        </p> <br>Innovative optimized solution seeker. Excited to be at
+                        the deployment phase of my new career as a web
+                        developer. I am ambitious, adventurous, assiduous,
+                        animated, and an alliteration advocate.
+                        
+                        <!-- Skills -->
+                        <p>
+                            <i class="fa fa-flask" aria-hidden="true" id="icons"></i> <span class="topics">Skills</span>
+                        </p><br>
+                        <!--Technical Skills -->
+                        <b style="text-align: center;padding-left: 40%;">Technical skills</b> <br>
+
+                        JavaScript <input type="range" min="1" max="100" value="50"> <br>
+                        CSS <input type="range" min="1" max="100" value="50"> <br>
+                        HTML <input type="range" min="1" max="100" value="50"> <br>
+                        React <input type="range" min="1" max="100" value="50"> <br>
+                        Redux <input type="range" min="1" max="100" value="50"><br>
+                        MongoDB <input type="range" min="1" max="100" value="50"> <br>
+                        Deployment <input type="range" min="1" max="100" value="50"><br>
+                        <br>
+                        <!--Additional Skills -->
+                        <b style="text-align: center;padding-left: 40%;">Additional skills</b> <br>
+                        Project Management <input type="range" min="1" max="100" value="50"><br>
+                        Recrutment <input type="range" min="1" max="100" value="50"> <br>
+                        Business Development <input type="range" min="1" max="100" value="50"><br>
+                        Editing <input type="range" min="1" max="100" value="50"> <br>
+                        Fundraising <input type="range" min="1" max="100" value="50"
+                            style="background-color: yellow;"><br>
+                        <!--Work Experiance -->
+                        <p>
+                            <i class="fa fa-briefcase" aria-hidden="true" id="icons"></i> <span class="topics">Work
+                                Experiance</span> <br>
+                            <b style="padding-right: 150px;">Event Manager</b> 03/2014-01/2017 <br>
+                            <br>
+                        </p><br>
+                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. <br>
+                        <br>
+                        <ul>
+                            <li>Lead and execute all phases of event planning and
+                                production spanning committee recruitment,
+                                training, vendor relationships and on-site facilitation.</li>
+                            <li>Brought new business to the organization through
+                                relentless networking and stewardship which helped
+                                the company win the bid for the State Department
+                                Summit on the Middle East and, the companies
+                                largest civic event to date, the United State of
+                                Women
+                                </li>
+                            <li> Exercise fiscal control over budget creation, tracking
+                                and reporting. Collaborate with employees at all organizational levels to advance cohesive
+                                operations.
+                                </li>
+                        </ul>
+
+                    </td><br>
+
+                    <!-- Second row -->
+
+
+                    <td style="padding-left: 30px;padding-right: 40px;">
+                        <!-- Work Experiance -->
+                        <p>
+                            <i class="fa fa-briefcase" aria-hidden="true" id="icons"></i> <span class="topics">Work
+                                Experiance</span> <br>
+                            <b style="padding-right: 140px;">Comunity Relation Manager</b> 06/2011-01/2014 <br>
+                            <B>Manager</B><br>
+                        </p><br>
+
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempora et nostrum excepturi molestias
+                        impedit. Perspiciatis modi officiis amet explicabo vero? <br>
+                        <ul>
+                            <li>Arranging presentations and pitch deck</li>
+                            <li>Designing a PR plan and establishing important focus
+                                points.</li>
+                            <li>Designing, creating and managing content across
+                                multiple communication platforms.</li>
+                            <li> Building relationships with key media players.
+                            </li>
+                        </ul>
+                        <!-- Education -->
+                        <p>
+                            <i class="fa fa-graduation-cap" aria-hidden="true" id="icons"></i>
+                            <span class="topics">Education</span><br>
+                            <b style="padding-right: 100px;">Engineering Immersion</b> 11/2018/-06/2018 <br>
+                            <b>vission</b>
+                        </p><br>
+                        Engineering Immersion Program
+                        Thinkful <br><br>
+                        Project-focused intensive program with emphasis on
+Mongo, Express, React, and JavaScript (MERN) technical
+stack.<br>
+                        <br>
+                        <ul>
+                            <li>Developed a full-stack web application, "RenewU",
+                                using React that allows users to explore various
+                                aspects of meditation. User's progress is stored on a
+                                backend created using Node and MongoDB.</li>
+                            <li>Developed a language learning app, "Foodie
+                                Phonetics" using spaced repetition and a linked list
+                                data structure. React was used to create the front
+                                end components while Node and Mongo were used
+                                to create a backend that stores user data.</li>
+                            <li>Developed a concierge app, "Pley", for individuals
+                                looking for curated suggestions when visiting a new
+                                place. React was used to develop the front end
+                                which includes real-time chat, drag and drop and
+                                variety of advanced features. The backend, built
+                                using Node, Express, and Mongo, takes advantage of
+                                well-developed RESTful API, Geospatial searching,
+                                and user authentication with JWT.</li>
+                           
+                        </ul>
+                        <!-- BA,English -->
+                        <p>
+                            <b style="padding-right: 200px;">BA,English</b>
+                            09/2001-09/2005<br>
+                            Universityof California,Los Angels
+                        </p>
+                    </td>
+
+                </tr>
+            </table>
+        </div>
+    </div>
+</body>
+
+</html>
